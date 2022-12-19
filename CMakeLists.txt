@@ -3,4 +3,4 @@ project(untitled2)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(untitled2 main.cpp data_structures/String/String.cpp)
+add_executable(untitled2 main.cpp data_structures/String/String.cpp one_file.cpp)
