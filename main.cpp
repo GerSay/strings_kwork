@@ -24,8 +24,8 @@ int main() {
 
     std::ifstream fin;
     std::ofstream fout;
-    fin.open(input_file.c_str(), std::ios_base::in);                             // -------------------------
-    fout.open(output_file.c_str(), std::ios_base::out | std::ios_base::trunc);   // -------------------------
+    fin.open(input_file.c_str(), std::ios_base::in);
+    fout.open(output_file.c_str(), std::ios_base::out | std::ios_base::trunc);
 
 
     if (!fin.is_open())
