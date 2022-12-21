@@ -132,31 +132,29 @@ int main() {
 
     uint32_t count_symbol_in_string = 0;
     String word;
-    while (fin) {
-        char c;
-        fin.get(c);
-
-        if (c == ' ' or c == '\n') {
+    char c;
+    while (fin.get(c)) {
+        if (c == ' ' || c == '\n') {
             char c1;
             fin.get(c1);
 
             if (c1 == ' ' && c == ' ') {
-                create_paragraph(count_left_paragraph, count_up_paragraph, fout);
+                create_paragraph(count_left_paragraph, count_up_paragraph - (count_symbol_in_string == 0), fout);
                 for (uint32_t i = 0; i < MAX_SIZE_STRING - 2; i++)
                     fin.get(c);
                 count_symbol_in_string = count_left_paragraph + count_right_paragraph;
-
-                continue;
             }
 
             if (!word.isEmpty()) {
                 if (count_symbol_in_string + word.size() > MAX_SIZE_STRING)
                     fout << '\n', count_symbol_in_string = 0;
                 write_word(word, fout), count_symbol_in_string += word.size(), word.clear();
-            }
 
-            if (count_symbol_in_string < MAX_SIZE_STRING && count_symbol_in_string)
-                fout << ' ', count_symbol_in_string++;
+                if (count_symbol_in_string < MAX_SIZE_STRING)
+                    fout << ' ', count_symbol_in_string++;
+                else
+                    fout << '\n', count_symbol_in_string = 0;
+            }
 
             if (c1 != ' ' && c1 != '\n')
                 word.pushBack(c1);
@@ -169,8 +167,16 @@ int main() {
             fout << '\n', count_symbol_in_string = 0;
     }
 
+    if (!word.isEmpty()) {
+        if (count_symbol_in_string + word.size() > MAX_SIZE_STRING)
+            fout << '\n';
+        write_word(word, fout), word.clear();
+    }
+
+
     fin.close();
     fout.close();
+
 
     return 0;
 }

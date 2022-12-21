@@ -42,3 +42,7 @@ std::istream& operator>>(std::istream& is, String& s) {
 const char *String::c_str() {
     return m_chars.data();
 }
+
+void String::popBack() {
+    m_chars.popBack();
+}

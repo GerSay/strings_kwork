@@ -16,7 +16,7 @@ public:
 
     void clear() noexcept;
     void pushBack(char c);
-
+    void popBack();
 
     friend std::ostream& operator<<(std::ostream&, const String&);
     friend std::istream& operator>>(std::istream& is, String& s);
