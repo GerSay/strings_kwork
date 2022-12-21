@@ -100,12 +100,6 @@ std::istream& operator>>(std::istream& is, String &s) {
 
 ////////////////////////////////////////////////////////////////////////////////////
 
-//
-void write_word(String &word, std::ofstream &file) {
-    for (char i : word)
-        file << i;
-}
-
 // создание отступов согласно условию задачи
 void create_paragraph(const uint32_t count_left_paragraph, const uint32_t count_up_paragraph, std::ofstream &file) {
     for (uint32_t i = 0; i <= count_up_paragraph; i++)
