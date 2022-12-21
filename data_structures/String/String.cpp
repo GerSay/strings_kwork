@@ -29,7 +29,6 @@ void String::clear() noexcept {
 std::ostream& operator<<(std::ostream& os, const String& s) {
     for (auto i : s)
         os << i;
-
     return os;
 }
 
